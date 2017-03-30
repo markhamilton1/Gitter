@@ -29,6 +29,15 @@ import GithubSetup
 from datetime import datetime
 
 
+COMMON_USER_QUERIES = {
+    '#poppy' : 'language:python repos:>=1 followers:>=1000'
+}
+COMMON_REPO_QUERIES = {
+    '#poppy' : 'language:python stars:>=100',
+    '#poppista' : 'language:python stars:>=10 topic:pythonista'
+}
+
+
 try:
     raw_input          # Python 2
 except NameError:
@@ -70,6 +79,19 @@ def __get_search_terms(search_type):
                 print('https://developer.github.com/v3/search/#search-repositories')
             print()
         else:
+            if q.startswith('#'):
+                if search_type == 'user':
+                    try:
+                        newq = COMMON_USER_QUERIES[q]
+                        q = newq
+                    except:
+                        pass
+                elif search_type == 'repo':
+                    try:
+                        newq = COMMON_REPO_QUERIES[q]
+                        q = newq
+                    except:
+                        pass
             return q
 
 
@@ -107,6 +129,14 @@ def __print_repo_info(repo):
             print(u"Description    : {}".format(repo.description))
         if repo.language:
             print(u"Language       : {}".format(repo.language))
+        if repo.size:
+            print(u"Size           : {}kb".format(repo.size))
+        if repo.watchers_count:
+            print(u"Watchers       : {}".format(repo.watchers_count))
+        if repo.forks_count:
+            print(u"Forks          : {}".format(repo.forks_count))
+        if repo.open_issues_count:
+            print(u"Open Issues    : {}".format(repo.open_issues_count))
         if repo.html_url:
             print(u"Github URL     : {}".format(repo.html_url))
         print()
