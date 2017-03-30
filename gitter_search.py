@@ -36,10 +36,10 @@ def __build_user_query(user):
     return q.strip()
 
 
-def __get(prompt):
+def __get(prompt, default=None):
     input = raw_input(prompt).strip()
     if input == '':
-        return None
+        return default
     return input
 
 
@@ -52,7 +52,7 @@ def __get_repo():
 
 
 def __get_search_type():
-    return __get('Enter Type Of Search (user or repo):')
+    return __get('Enter Type Of Search ([user]|repo):', 'user')
 
 
 def __get_topic():
@@ -128,6 +128,7 @@ if __name__ == "__main__":
 
     type = __get_search_type()
     if type == 'user':
+        print('Github User Search --------------------------')
         user = __get_user()
         query = __build_user_query(user)
         users = gh.search_users(query)
@@ -138,6 +139,7 @@ if __name__ == "__main__":
         else:
             print("Nothing Found")
     elif type == 'repo':
+        print('Github Repo Search --------------------------')
         user = __get_user()
         repo = __get_repo()
         lang = __get_language()
