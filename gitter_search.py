@@ -79,12 +79,19 @@ def __init_github():
 def __print_repo_info(repo):
     if repo:
         print(u"Repository Name: {}".format(repo.full_name))
+        if repo.owner:
+            if repo.owner.name:
+                print(u"Owner          : {}".format(repo.owner.name))
+            else:
+                print(u"Owner          : {}".format(repo.owner.login))
         if repo.created_at:
             print(u"Created        : {}".format(str(repo.created_at)))
         if repo.description:
             print(u"Description    : {}".format(repo.description))
         if repo.language:
             print(u"Language       : {}".format(repo.language))
+        if repo.html_url:
+            print(u"Github URL     : {}".format(repo.html_url))
         print()
 
 
@@ -110,10 +117,8 @@ def __print_user_info(user):
             print(u"Followers   : {}".format(user.followers))
         if user.updated_at:
             print(u"Last Updated: {}".format(str(user.updated_at)))
-        if user.url:
-            print(u"Github URL  : {}".format(user.url))
-        if user.repos_url:
-            print(u"Repos URL   : {}".format(user.repos_url))
+        if user.html_url:
+            print(u"Github URL  : {}".format(user.html_url))
         print()
 
 
@@ -145,4 +150,3 @@ if __name__ == "__main__":
                 __print_repo_info(repo)
         else:
             print("Nothing Found")
-
