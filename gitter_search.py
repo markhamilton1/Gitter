@@ -12,30 +12,6 @@ except NameError:
     raw_input = input  # Python 3
 
 
-def __build_repo_query(user, repo, lang, topic):
-    q = ""
-    if user:
-        q += "user:" + user + " "
-    if repo:
-        q += "repo:\"" + repo + "\" "
-    if lang:
-        q += "language:" + lang + " "
-    if topic:
-        q += "topic:" + topic
-    if q == "":
-        return None
-    return q.strip()
-
-
-def __build_user_query(user):
-    q = ""
-    if user:
-        q += user
-    if q == "":
-        return None
-    return q.strip()
-
-
 def __get(prompt, default=None):
     input = raw_input(prompt).strip()
     if input == '':
@@ -43,24 +19,30 @@ def __get(prompt, default=None):
     return input
 
 
-def __get_language():
-    return __get('Enter Repo Language:')
-
-
-def __get_repo():
-    return __get('Enter Repo Name:')
+def __get_search_terms(search_type):
+    while True:
+        q = __get('Enter Search Terms (-h for help):')
+        if q == '-h':
+            print()
+            print('To search enter the desired query and press return.')
+            if search_type == 'user':
+                print('For a detailed explanation of how to build a user')
+                print('search query go to')
+                print('https://developer.github.com/v3/search/#search-users')
+            elif search_type == 'repo':
+                print('For a detailed explanation of how to build a repo')
+                print('search query go to')
+                print('https://developer.github.com/v3/search/#search-repositories')
+            print()
+        else:
+            return q
 
 
 def __get_search_type():
-    return __get('Enter Type Of Search ([user]|repo):', 'user')
-
-
-def __get_topic():
-    return __get('Enter Repo Topic:')
-
-
-def __get_user():
-    return __get('Enter Github User:')
+    t = __get('Enter Type Of Search ([user]|repo):', 'user')
+    if t in ['repo', 'user']:
+        return t
+    return None
 
 
 def __init_github():
@@ -129,8 +111,7 @@ if __name__ == "__main__":
     type = __get_search_type()
     if type == 'user':
         print('Github User Search --------------------------')
-        user = __get_user()
-        query = __build_user_query(user)
+        query = __get_search_terms('user')
         users = gh.search_users(query)
         print()
         if users and users.totalCount > 0:
@@ -140,11 +121,7 @@ if __name__ == "__main__":
             print("Nothing Found")
     elif type == 'repo':
         print('Github Repo Search --------------------------')
-        user = __get_user()
-        repo = __get_repo()
-        lang = __get_language()
-        topic = __get_topic()
-        query = __build_repo_query(user, repo, lang, topic)
+        query = __get_search_terms('repo')
         repos = gh.search_repositories(query)
         print()
         if repos and repos.totalCount > 0:
@@ -152,3 +129,5 @@ if __name__ == "__main__":
                 __print_repo_info(repo)
         else:
             print("Nothing Found")
+    else:
+        print("Unrecognized Search Type")
