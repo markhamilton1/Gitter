@@ -1,4 +1,27 @@
 # -*- coding: UTF-8 -*-
+"""
+gitter_search.py
+Version: 1.0.0
+Created by: Mark Hamilton
+Created: March 30, 2017
+gitter_search is a module that provides
+basic search services in Pythonista for
+Github.
+gitter_search is implemented on the
+Github API v3.
+This API requires a username and password
+to login to a Github account.
+When you have a Github account, follow
+these steps.
+1. Execute gitter_search in Pythonista on
+your iOS device.
+2. Enter the username at the prompt.
+3. Enter the password at the prompt.
+If everything was completed successfully
+you will then be prompted to choose the
+type of search you want to do: user or
+repo.
+"""
 
 
 from __future__ import print_function
@@ -11,6 +34,18 @@ try:
 except NameError:
     raw_input = input  # Python 3
 
+
+def download():
+    print('\nGetting gitter_search.py From GIT')
+    url = 'https://raw.githubusercontent.com/markhamilton1/Gitter/master/gitter_search.py'
+    r = requests.get(url)
+    if r.status_code == requests.codes.ok:
+        with open('gitter_search.py', 'w') as script_fr:
+            script_fr.write(r.text)
+        print('gitter_search.py Downloaded Successfully')
+    else:
+        print('!gitter_search.py Download Failed!')
+        
 
 def __get(prompt, default=None):
     input = raw_input(prompt).strip()
