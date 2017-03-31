@@ -39,3 +39,19 @@ by using any of a number of qualifiers. They are as follows:
 • `in:`  Qualifies which name fields are searched. You can restrict the search to the
 username field (`login`), the email field (`email`), or the real name field (`fullname`).
 Example: `roger in:login` or `peter in:fullname`
+
+• `repos:`  Filter users based on the number of repositories they have. Example: 
+`repos:>10` or `repos:0..100`
+
+• `location:`  Filter users based on the location indicated in their profile. Example:
+`location:spain` or `location:usa`
+
+• `language:`  Filter users based on the language used for one or more of their repos.
+Example: `language:python`
+
+• `created:`  Filter users based on when they created their Github account. Example:
+`created:>=2015-01-25`
+
+• `followers:`. Filter users based on the numbe of followers they have. Example:
+`followers:>100`
+
