@@ -73,8 +73,6 @@ Example: `astro in:name` or `astro in:description`
 • `language:`  Filter repos based on the language they are written in.
 Example: `language:python`
 
-• `repo:`  Limit searches to specific repo.
-
 • `user:`  Limit searches to specific user. Example: `user:mark`
 
 • `size:`  Filter repos based on their size (in kilobytes). Example: `size:>=10` or
