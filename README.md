@@ -85,3 +85,4 @@ Example: `language:python`
 • `topic:`  Filter repos based on the specified topic. Example: `topic:github` or
 `topic:pythonista topic:dropbox`
 
+In either case, multiple qualifiers may be specified by seperating them with spaces.
