@@ -17,4 +17,20 @@ When you have a Github account, follow these steps.
 3. Enter the password at the prompt.
 
 If everything was completed successfully you will then be prompted to choose the
-type of search you want to do: user or repo.
+type of search you want to do: 'user' or 'repo'. Just pressing return assumes the
+default of 'user'.
+
+The next prompt asks for a search query.
+
+Github provides a mechanism to help specify a more complex query so that you can
+find the users or repos that you might be interested in.
+
+gitter_search has some built in short-cut queries that you can use. For user
+searches you can enter `#poppy` (popular python), or for repo searches you can
+enter `#poppy` (popular python) or `#poppista` (popular pythonista). In all
+cases this uses the search query associated with the short-cut.
+
+You are always able to manually enter your own queries. The query can be constrained
+by using any of a number of qualifiers. They are as follows:
+
+• type:  With this qualifier you can restrict the search to just personal accounts (`user`) or organization accounts (`org`).
