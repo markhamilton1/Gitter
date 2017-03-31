@@ -31,7 +31,7 @@ enter `#poppy` (popular python) or `#poppista` (popular pythonista). In all
 cases this uses the search query associated with the short-cut.
 
 You are always able to manually enter your own queries. The query can be constrained
-by using any of a number of qualifiers. They are as follows:
+by using any of a number of qualifiers. For a user search they are as follows:
 
 • `type:`  With this qualifier you can restrict the search to just personal accounts
 (`user`) or organization accounts (`org`). Example: `type:user`
@@ -52,6 +52,36 @@ Example: `language:python`
 • `created:`  Filter users based on when they created their Github account. Example:
 `created:>=2015-01-25`
 
-• `followers:`. Filter users based on the numbe of followers they have. Example:
+• `followers:`  Filter users based on the numbe of followers they have. Example:
 `followers:>100`
+
+For a repo search they are as follows:
+
+• `created:`  Filter repos based on date of creation. Example: `created:>2015-01-25`
+
+• `pushed:`  Filter repos based on date of last update. Example: `pushed:>=2015-01-20`
+
+• `fork:`  Filter repos based only if they are forked (`only`) or include forked (`true`).
+Example: `fork:only` or `fork:true`
+
+• `forks:`  Filter repos based on the number of forks. Example: `forks:>=10`
+
+• `in:`  Qualifies which name fields are searched. You can restrict the search to the name
+field (`name`), description field (`description`), or readme field (`readme`).
+Example: `astro in:name` or `astro in:description`
+
+• `language:`  Filter repos based on the language they are written in.
+Example: `language:python`
+
+• `repo:`  Limit searches to specific repo.
+
+• `user:`  Limit searches to specific user. Example: `user:mark`
+
+• `size:`  Filter repos based on their size (in kilobytes). Example: `size:>=10` or
+`size:<=100`
+
+• `stars:`  Filter repos based on number of watchers. Example: `stars:>5`
+
+• `topic:`  Filter repos based on the specified topic. Example: `topic:github` or
+`topic:pythonista topic:dropbox`
 
