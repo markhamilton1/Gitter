@@ -33,4 +33,5 @@ cases this uses the search query associated with the short-cut.
 You are always able to manually enter your own queries. The query can be constrained
 by using any of a number of qualifiers. They are as follows:
 
-• type:  With this qualifier you can restrict the search to just personal accounts (`user`) or organization accounts (`org`).
+• `type:`  With this qualifier you can restrict the search to just personal accounts
+(`user`) or organization accounts (`org`).
