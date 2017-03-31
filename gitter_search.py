@@ -68,15 +68,13 @@ def __get_search_terms(search_type):
         q = __get('Enter Search Terms (-h for help):')
         if q == '-h':
             print()
-            print('To search enter the desired query and press return.')
+            print('To search, enter the desired query and press return.')
             if search_type == 'user':
                 print('For a detailed explanation of how to build a user')
-                print('search query go to')
-                print('https://developer.github.com/v3/search/#search-users')
+                print('search query refer to the readme in the Gitter repo.')
             elif search_type == 'repo':
                 print('For a detailed explanation of how to build a repo')
-                print('search query go to')
-                print('https://developer.github.com/v3/search/#search-repositories')
+                print('search query refer to the readme in the Gitter repo.')
             print()
         else:
             if q.startswith('#'):
