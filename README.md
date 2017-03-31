@@ -35,6 +35,7 @@ by using any of a number of qualifiers. They are as follows:
 
 • `type:`  With this qualifier you can restrict the search to just personal accounts
 (`user`) or organization accounts (`org`). Example: `type:user`
+
 • `in:`  Qualifies which name fields are searched. You can restrict the search to the
 username field (`login`), the email field (`email`), or the real name field (`fullname`).
 Example: `roger in:login` or `peter in:fullname`
