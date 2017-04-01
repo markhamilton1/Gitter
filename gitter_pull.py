@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 """
 gitter_pull.py
-Version: 1.0.0
+Version: 1.1.0
 Created by: Mark Hamilton
 Created: March 31, 2017
 """
@@ -123,13 +123,9 @@ def __pull(repo, rootdir, contents):
         elif type == 'dir':
             dir_contents = repo.get_contents(path)
             __pull(repo, rootdir, dir_contents)
-            
 
-if __name__ == "__main__":
 
-    gh = __init_github()
-
-    name = __get_repo_name()
+def pull_repo(gh, name):
     if name:
         query = "{} in:fullname".format(name)
         try:
@@ -161,3 +157,10 @@ if __name__ == "__main__":
             print("Nothing Found")
     else:
         print("Pull Cancelled")
+                    
+
+if __name__ == "__main__":
+
+    gh = __init_github()
+    name = __get_repo_name()
+    get_pull_repo(gh, name)

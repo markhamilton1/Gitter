@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 """
 gitter_search.py
-Version: 1.2.0
+Version: 1.3.0
 Created by: Mark Hamilton
 Created: March 30, 2017
 gitter_search is a module that provides
@@ -181,49 +181,56 @@ def __search_repos(gh, query):
     except:
         repos = None
     return repos
-            
-                            
+
+
+def search_repos(gh, query):
+    if query:
+        try:
+            repos = gh.search_repositories(query)
+        except:
+            repos = None
+        print()
+        if repos and repos.totalCount > 0:
+            for repo in repos:
+                __print_repo_info(repo)
+        else:
+            print("Nothing Found")
+    else:
+        print("Search Cancelled")
+
+
 def __search_users(gh, query):
     try:
         users = gh.search_users(query)
     except:
         users = None
     return users
+    
+    
+def search_users(gh, query):
+    if query:
+        users = __search_users(gh, query)
+        print()
+        if users and users.totalCount > 0:
+            for user in users:
+                __print_user_info(user)
+        else:
+            print("Nothing Found")
+    else:
+        print("Search Cancelled")
 
 
 if __name__ == "__main__":
 
     gh = __init_github()
-
     type = __get_search_type()
     if type == 'user':
         print('Github User Search --------------------------')
         query = __get_search_terms('user')
-        if query:
-            users = __search_users(gh, query)
-            print()
-            if users and users.totalCount > 0:
-                for user in users:
-                    __print_user_info(user)
-            else:
-                print("Nothing Found")
-        else:
-            print("Search Cancelled")
+        search_users(gh, query)
     elif type == 'repo':
         print('Github Repo Search --------------------------')
         query = __get_search_terms('repo')
-        if query:
-            try:
-                repos = gh.search_repositories(query)
-            except:
-                repos = None
-            print()
-            if repos and repos.totalCount > 0:
-                for repo in repos:
-                    __print_repo_info(repo)
-            else:
-                print("Nothing Found")
-        else:
-            print("Search Cancelled")
+        search_repos(gh, query)
     else:
         print("Unrecognized Search Type")
