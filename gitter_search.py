@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 """
 gitter_search.py
-Version: 1.1.0
+Version: 1.2.0
 Created by: Mark Hamilton
 Created: March 30, 2017
 gitter_search is a module that provides
@@ -114,7 +114,7 @@ def __init_github():
 
 
 def __print_repo_info(repo):
-    if repo:
+    if repo and repo.permissions and repo.permissions.pull:
         print(u"Repository Name: {}".format(repo.full_name))
         if repo.owner:
             if repo.owner.name:
@@ -135,6 +135,10 @@ def __print_repo_info(repo):
             print(u"Forks          : {}".format(repo.forks_count))
         if repo.open_issues_count:
             print(u"Open Issues    : {}".format(repo.open_issues_count))
+        if repo.permissions.push:
+            print(u"Access         : Writable")
+        else:
+            print(u"Access         : Read-Only")
         if repo.html_url:
             print(u"Github URL     : {}".format(repo.html_url))
         print()
