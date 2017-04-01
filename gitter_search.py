@@ -25,10 +25,10 @@ repo.
 
 
 from __future__ import print_function
-import GithubSetup
 from datetime import datetime
+import GithubSetup
 
-
+# SHORTCUT DEFINITIONS
 COMMON_USER_QUERIES = {
     '#poppy' : 'language:python repos:>=1 followers:>=1000'
 }
@@ -37,7 +37,7 @@ COMMON_REPO_QUERIES = {
     '#poppista' : 'language:python stars:>=10 topic:pythonista'
 }
 
-
+# map raw_input for Python 2 or Python 3
 try:
     raw_input          # Python 2
 except NameError:
@@ -45,6 +45,10 @@ except NameError:
 
 
 def download():
+    """
+    Download the latest version of gitter_search.py
+    from Github.
+    """
     print('\nGetting gitter_search.py From GIT')
     url = 'https://raw.githubusercontent.com/markhamilton1/Gitter/master/gitter_search.py'
     r = requests.get(url)
