@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 """
 gitter_pull.py
-Version: 1.1.0
+Version: 1.1.1
 Created by: Mark Hamilton
 Created: March 31, 2017
 """
