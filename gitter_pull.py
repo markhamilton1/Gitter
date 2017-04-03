@@ -163,4 +163,4 @@ if __name__ == "__main__":
 
     gh = __init_github()
     name = __get_repo_name()
-    get_pull_repo(gh, name)
+    pull_repo(gh, name)
